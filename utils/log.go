@@ -2,9 +2,9 @@ package utils
 
 import (
 	"fmt"
-	"os"
-	"strconv"
+	//"os"
 	"runtime"
+	//"strconv"
 )
 
 /*
@@ -41,11 +41,11 @@ works only if debug=true
 func Println(messages ...interface{}) {
 
 	//Default debug false
-	var debug bool
+	//var debug bool
 
-	debug, _ = strconv.ParseBool(os.Getenv("DEBUG"))
+	//debug, _ = strconv.ParseBool(os.Getenv("DEBUG"))
 
-	if debug {
+	if true {
 		prefix := "[=>]"
 		postfix := "\n"
 		for _, message := range messages {
@@ -110,16 +110,16 @@ func Color(colorString string) func(...interface{}) string {
 }
 
 //this logs the function name as well.
-func HandleError(err error,params...interface{}) error {
+func HandleError(err error, params ...interface{}) {
 	// notice that we're using 1, so it will actually log the where
 	// the error happened, 0 = this function, we don't want that.
 	PrintFatal("----------------------")
 	pc, fn, line, _ := runtime.Caller(1)
 
-	PrintFatal(fmt.Sprintf("[error] in %s[%s:%d] %v", runtime.FuncForPC(pc).Name(), fn, line))
-	PrintFatal(err)
+	PrintFatal(fmt.Sprintf("Error in %s[%s:%d]", runtime.FuncForPC(pc).Name(), fn, line))
+	PrintFatal("[Error] ", err)
 	for _, param := range params {
-		PrintFatal("%+v\n",param)
+		PrintFatal(param)
 	}
 	PrintFatal("----------------------")
 }

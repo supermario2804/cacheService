@@ -1,6 +1,7 @@
 package main
 
 import (
+	"cacheDataService/handlers"
 	"fmt"
 	"net/http"
 )
@@ -21,8 +22,9 @@ func headers(w http.ResponseWriter, req *http.Request) {
 
 func main() {
 
-	http.HandleFunc("/api/set", hello)
+	http.HandleFunc("/api/set", handlers.SetTableCache)
 	http.HandleFunc("/api/get", headers)
 
+	fmt.Printf("The server started...")
 	http.ListenAndServe(":8090", nil)
 }

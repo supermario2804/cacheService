@@ -1,11 +1,11 @@
 package handlers
+
 import (
+	"cacheDataService/services"
+	"cacheDataService/utils"
+	"fmt"
 	"net/http"
-	""
 )
-
-
-
 
 /*DeleteBill Receives a bill id and soft deletes it from database*/
 func SetTableCache(w http.ResponseWriter, r *http.Request) {
