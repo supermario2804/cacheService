@@ -10,13 +10,12 @@ import (
 	"github.com/go-redis/redis"
 )
 
-type setRequest struct {
-	Table      string      `json:"table"`
-	PrimaryKey string      `json:"pk"`
-	Data       interface{} `json:"data"`
+type getRequest struct {
+	Table      string `json:"table"`
+	PrimaryKey string `json:"pk"`
 }
 
-func SetTableCache(w http.ResponseWriter, r *http.Request) (utils.ApiResponse, int) {
+func GetTableCache(w http.ResponseWriter, r *http.Request) (utils.ApiResponse, int) {
 	var reqdata setRequest
 
 	apiResp := utils.ApiResponse{
@@ -53,21 +52,17 @@ func SetTableCache(w http.ResponseWriter, r *http.Request) (utils.ApiResponse, i
 		utils.HandleError(connErr)
 		return apiResp, http.StatusInternalServerError
 	}
-	utils.PrintSuccess(pong)
+	utils.PrintInfo(pong)
 
-	jsonData, jsonErr := json.Marshal(reqdata.Data)
-	if jsonErr != nil {
-		utils.HandleError(jsonErr)
+	val, getErr := client.Get(reqdata.Table + "_" + reqdata.PrimaryKey).Result()
+	if getErr != nil {
+		utils.HandleError(getErr)
 		return apiResp, http.StatusInternalServerError
 	}
 
-	setErr := client.Set(reqdata.Table+"_"+reqdata.PrimaryKey, jsonData, 0).Err()
-	if setErr != nil {
-		utils.HandleError(setErr)
-		return apiResp, http.StatusInternalServerError
-	}
 	apiResp.Success = true
 	apiResp.Status = http.StatusOK
-	apiResp.Message = "Cache set successfully"
+	apiResp.Message = "Cache fetched successfully"
+	apiResp.Data["tableData"] = val
 	return apiResp, http.StatusOK
 }
