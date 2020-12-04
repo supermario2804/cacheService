@@ -1,0 +1,3 @@
+--> change the conf file of redis
+--> in redis change the directory of backup
+--> like dbfilename, and dir

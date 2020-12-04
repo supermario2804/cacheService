@@ -48,6 +48,7 @@ func SetTableCache(w http.ResponseWriter, r *http.Request) (utils.ApiResponse, i
 		DB:       0,
 	})
 
+	defer client.Close()
 	pong, connErr := client.Ping().Result()
 	if connErr != nil {
 		utils.HandleError(connErr)
