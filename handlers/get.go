@@ -24,3 +24,14 @@ func GetPageCache(w http.ResponseWriter, r *http.Request) {
 	utils.PrintWarn(fmt.Sprintf("Responded: %v", utils.Info(resp.Success, resp.Status, resp.Message)))
 	utils.SendHTTPResponse(w, resp)
 }
+
+func HealthCheck(w http.ResponseWriter, r *http.Request) {
+	utils.PrintFatal(fmt.Sprintf("Requested: %s", utils.Info(r.URL)))
+	resp := new(utils.ApiResponse)
+	resp.Status = http.StatusOK
+	resp.Message = "Service is healthy"
+	resp.Success = true
+	w.WriteHeader(http.StatusOK)
+	utils.PrintWarn(fmt.Sprintf("Responded: %v", utils.Info(resp.Success, resp.Status, resp.Message)))
+	utils.SendHTTPResponse(w, resp)
+}
