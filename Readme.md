@@ -31,9 +31,9 @@ It is the **cacheDataService**. Feature of this service is as below :
 
 ## 1. ../api/set
 
-### Method : Post 
-### URL : localhost:8090/api/set
-### Request JSON :
+#### Method : Post 
+#### URL : localhost:8090/api/set
+#### Request JSON :
 ```json
 {
     "table":"emp",
@@ -43,5 +43,44 @@ It is the **cacheDataService**. Feature of this service is as below :
         "LastName":"Patel",
         "Phone":"123456"
     }
+}
+```
+
+## 2. ../api/get
+
+#### Method : Post 
+#### URL : localhost:8090/api/get
+#### Request JSON :
+```json
+{
+    "table":"emp",
+    "pk":"1"
+}
+```
+
+## 3. ../api/setPage
+
+#### Method : Post 
+#### URL : localhost:8090/api/setPage
+#### Request JSON :
+```json
+{
+    "title":"transaction",
+    "pageNumber":"1",
+    "sortBy":"asc",
+    "data": [
+        {
+            "name":"Amazon",
+            "amount":"634",
+            "token":"A004"
+        },
+
+        {
+            "name":"Flipkart",
+            "amount":"712",
+            "token":"A005"
+        }
+
+    ]
 }
 ```
