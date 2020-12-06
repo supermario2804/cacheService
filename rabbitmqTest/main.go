@@ -12,7 +12,7 @@ func main() {
 	//If it doesn't exist, use the default connection string.
 
 	if url == "" {
-		//Don't do this in production, this is for testing purposes only.
+		//shouldn't use this in production, this is for testing purposes only.
 		url = "amqp://guest:guest@amq:5672"
 	}
 
