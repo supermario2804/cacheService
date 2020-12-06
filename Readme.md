@@ -1,6 +1,3 @@
---> change the conf file of redis
---> in redis change the directory of backup
---> like dbfilename, and dir
 # cacheDataService
 
 It is the **cacheDataService**. Feature of this service is as below : 
@@ -33,6 +30,7 @@ It is the **cacheDataService**. Feature of this service is as below :
 
 #### Method : `Post`
 #### URL : `localhost:8090/api/set`
+#### Description: The following request sets cache for `Table:emp` Row `PrimaryKey:1` and `columns:FirstName,LastName,Phone`
 #### Request JSON :
 ```json
 {
@@ -50,6 +48,7 @@ It is the **cacheDataService**. Feature of this service is as below :
 
 #### Method : `Post`
 #### URL : `localhost:8090/api/get`
+#### Description: The following request gets cache for `Table:emp` Row `PrimaryKey:1`
 #### Request JSON :
 ```json
 {
@@ -62,6 +61,7 @@ It is the **cacheDataService**. Feature of this service is as below :
 
 #### Method : `Post` 
 #### URL : `localhost:8090/api/setPage`
+#### Description: The following request sets page cache for `Page:transaction`,`PageNumber:1` and `sortby:asc`.
 #### Request JSON :
 ```json
 {
@@ -89,6 +89,7 @@ It is the **cacheDataService**. Feature of this service is as below :
 
 #### Method : `Post` 
 #### URL : `localhost:8090/api/getPage`
+#### Description: The following request gets page cache for `Page:transaction`,`PageNumber:1` and `sortby:asc`.
 #### Request JSON :
 ```json
 {
