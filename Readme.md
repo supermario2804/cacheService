@@ -34,7 +34,7 @@ It is the **cacheDataService**. Feature of this service is as below :
 ### Method : Post 
 ### URL : localhost:8090/api/set
 ### Request JSON :
-```
+```json
 {
     "table":"emp",
     "pk":"1",
@@ -44,4 +44,4 @@ It is the **cacheDataService**. Feature of this service is as below :
         "Phone":"123456"
     }
 }
-```js
+```
