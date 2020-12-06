@@ -84,3 +84,17 @@ It is the **cacheDataService**. Feature of this service is as below :
     ]
 }
 ```
+
+## 4. ../api/getPage
+
+#### Method : Post 
+#### URL : localhost:8090/api/getPage
+#### Request JSON :
+```json
+{
+"title":"transaction",
+"pageNumber":"1",
+"sortBy":"asc"
+}
+```
+
