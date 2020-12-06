@@ -4,7 +4,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: go-docker
+      dockerfile: Dockerfile
     ports:
       - "8090:8090"
     depends_on:
@@ -19,6 +19,7 @@ services:
     image: redis:latest
     ports:
       - "6379:6379"
+      - "64919:64919"
     command: redis-server
     networks:
       - backend

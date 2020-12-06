@@ -17,10 +17,10 @@ type setRequest struct {
 }
 
 type setPageRequest struct {
-	Title      string `json:"title"`
-	PageNumber string `json:"pageNumber"`
-	SortBy     string `json:"sortby"`
-	Data       []interface{}
+	Title      string        `json:"title"`
+	PageNumber string        `json:"pageNumber"`
+	SortBy     string        `json:"sortby"`
+	Data       []interface{} `json:"data"`
 }
 
 func SetTableCache(w http.ResponseWriter, r *http.Request) (utils.ApiResponse, int) {
@@ -50,7 +50,7 @@ func SetTableCache(w http.ResponseWriter, r *http.Request) (utils.ApiResponse, i
 		return apiResp, http.StatusBadRequest
 	}
 	client := redis.NewClient(&redis.Options{
-		Addr:     "localhost:6379",
+		Addr:     "redis:6379",
 		Password: "",
 		DB:       0,
 	})
@@ -104,11 +104,11 @@ func SetPageCache(w http.ResponseWriter, r *http.Request) (utils.ApiResponse, in
 
 	if reqdata.Title == "" || reqdata.PageNumber == "" || reqdata.SortBy == "" {
 		utils.HandleError(fmt.Errorf("Title or Pagenumber or Sortby field is missing"), reqdata.Title, reqdata.PageNumber, reqdata.SortBy)
-		
+
 		return apiResp, http.StatusBadRequest
 	}
 	client := redis.NewClient(&redis.Options{
-		Addr:     "localhost:6379",
+		Addr:     "redis:6379",
 		Password: "",
 		DB:       0,
 	})

@@ -11,5 +11,5 @@ RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix nocgo -o ./dist/cacheDat
 
 FROM alpine
 COPY --from=builder /go/src/cacheDataService/dist/cacheDataService ./app
-EXPOSE 8080 8090 5672
+EXPOSE 8080 8090 5672 64919
 ENTRYPOINT ["./app"]
